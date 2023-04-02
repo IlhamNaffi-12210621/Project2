@@ -10,7 +10,7 @@ class LoginView extends StatelessWidget {
       body: Column(
         children: [
           Padding(
-            padding: const EdgeInsets.only(top: 150, bottom: 50),
+            padding: const EdgeInsets.only(top: 150, bottom: 51),
             child: Text('Aplikasi \nPendataan Warga',
               style: TextStyle(
                 fontSize: 50,
