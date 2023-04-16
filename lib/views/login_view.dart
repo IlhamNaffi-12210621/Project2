@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:nako2/views/dashboard_view.dart';
 
 class LoginView extends StatelessWidget {
   const LoginView({super.key});
@@ -11,11 +12,9 @@ class LoginView extends StatelessWidget {
         children: [
           Padding(
             padding: const EdgeInsets.only(top: 150, bottom: 51),
-            child: Text('Aplikasi \nPendataan Warga',
-              style: TextStyle(
-                fontSize: 50,
-                fontWeight: FontWeight.bold
-              ),
+            child: Text(
+              'Aplikasi \nPendataan Warga',
+              style: TextStyle(fontSize: 50, fontWeight: FontWeight.bold),
               textAlign: TextAlign.center,
             ),
           ),
@@ -28,44 +27,50 @@ class LoginView extends StatelessWidget {
                   color: Colors.brown[200],
                   child: Column(
                     children: [
-                      SizedBox(height: 100,),
+                      SizedBox(
+                        height: 100,
+                      ),
                       Padding(
                         padding: const EdgeInsets.fromLTRB(20, 10, 20, 10),
                         child: TextField(
                           decoration: InputDecoration(
-                            border: OutlineInputBorder(),
-                            fillColor: Colors.grey[50],
-                            filled: true
-                          ),
+                              border: OutlineInputBorder(),
+                              fillColor: Colors.grey[50],
+                              filled: true),
                         ),
                       ),
-                      
                       Padding(
                         padding: const EdgeInsets.fromLTRB(20, 10, 20, 10),
                         child: TextField(
                           decoration: InputDecoration(
-                            border: OutlineInputBorder(),
-                            fillColor: Colors.grey[50],
-                            filled: true
-                          ),
+                              border: OutlineInputBorder(),
+                              fillColor: Colors.grey[50],
+                              filled: true),
                         ),
                       ),
-                      ElevatedButton(onPressed: (){}, 
+                      ElevatedButton(
+                        onPressed: () {
+                          Navigator.pushReplacement(context,
+                              MaterialPageRoute(builder: (bc) {
+                            return DashboardView();
+                          }));
+                        },
                         child: Padding(
                           padding: const EdgeInsets.symmetric(horizontal: 40),
                           child: Text('Login'),
                         ),
                         style: ElevatedButton.styleFrom(
-                          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(30)),
-                          primary: Colors.red
-                        ),
+                            shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(30)),
+                            primary: Colors.red),
                       )
-                ],
-            ),
-          ),
+                    ],
+                  ),
+                ),
               ),
               Center(
-                child: Image.asset('assets/logo.png',
+                  child: Image.asset(
+                'assets/logo.png',
                 width: 150,
               )),
             ],

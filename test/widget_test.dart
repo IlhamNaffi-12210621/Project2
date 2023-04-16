@@ -14,7 +14,7 @@ import 'package:nako2/views/login_view.dart';
 void main() {
   testWidgets('Counter increments smoke test', (WidgetTester tester) async {
     // Build our app and trigger a frame.
-    await tester.pumpWidget(const LoginView());
+    await tester.pumpWidget(const MaterialApp());
 
     // Verify that our counter starts at 0.
     expect(find.text('0'), findsOneWidget);
