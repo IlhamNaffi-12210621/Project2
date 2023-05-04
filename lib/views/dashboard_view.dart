@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:nako2/providers/dashboard_providers.dart';
 import 'package:nako2/views/berita_panel.dart';
+import 'package:nako2/views/peta_view.dart';
 import 'package:provider/provider.dart';
 
 class DashboardView extends StatelessWidget {
@@ -104,8 +105,14 @@ class _ListIcon extends StatelessWidget {
         _TombolMenu(
           gambar: 'assets/icon2.png',
         ),
-        _TombolMenu(
-          gambar: 'assets/icon3.png',
+        InkWell(
+          onTap: () {
+            Navigator.push(context, 
+              MaterialPageRoute(builder: (c)=>PetaView() ));
+          },
+          child: _TombolMenu(
+            gambar: 'assets/icon3.png',
+          ),
         ),
         _TombolMenu(
           gambar: 'assets/icon4.png',
