@@ -3,6 +3,7 @@ import 'package:flutter_map/flutter_map.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:provider/provider.dart';
 import 'package:nako2/providers/peta_provider.dart';
+import 'package:latlong2/latlong.dart';
 
 class PetaView extends StatelessWidget {
   const PetaView({super.key});
@@ -19,6 +20,10 @@ class PetaView extends StatelessWidget {
           children: [
             FlutterMap(options: MapOptions(
                 center: prov.latLng,
+                onPositionChanged: (position, hasGesture) {
+                  print(prov.mapController.zoom);
+                  prov.hitungulang();
+                },
                 onMapReady: () {
                   prov.mapReady = true;
                   },
@@ -26,6 +31,18 @@ class PetaView extends StatelessWidget {
                 children: [
                   TileLayer(
                     urlTemplate: 'https://mt3.google.com/vt/lyrs=m&x={x}&y={y}&z={z}',
+                  ),
+                  Consumer<PetaProvider>(
+                    builder: (context, prov, w) {
+                      return CircleLayer(
+                        circles: [
+                          CircleMarker(
+                            point: prov.titiktengah, 
+                            color: Colors.blue.withOpacity(0.4),
+                            radius: prov.radius)
+                        ],
+                      );
+                    }
                   ),
                   MarkerLayer(
                     markers: [
@@ -40,7 +57,17 @@ class PetaView extends StatelessWidget {
                   )
                 ],
                 mapController: prov.mapController,
+            ),
+
+            Consumer<PetaProvider>(
+              builder: (context, value, child) {
+                  return ElevatedButton(onPressed: (){
+
+                  }, child: value.hitungjarak() > 30 ? Text('Diluar jangkauan') : Text('di dalam jangkauan')
+                );
+              },
             )
+          
           ],
         ),
     );

@@ -58,6 +58,7 @@ class DashboardPanel extends StatelessWidget {
         _BackgroundDashboard(),
         _InfoPengguna(),
         Card(
+          elevation: 0,
           margin: EdgeInsets.fromLTRB(0, 180, 0, 0),
           shape:
               RoundedRectangleBorder(borderRadius: BorderRadius.circular(25)),
@@ -129,7 +130,7 @@ class _TombolMenu extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.all(11), //Disini ubah jarak dan tampilan
+      padding: EdgeInsets.all(9), //Disini ubah jarak dan tampilan
       margin: EdgeInsets.all(8),
       child: Image.asset(
         gambar,

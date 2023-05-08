@@ -14,6 +14,7 @@ main(List<String> args) {
       ChangeNotifierProvider(create: (c) => PetaProvider())
     ],
     builder: (context, Widget) {
+      context.read<PetaProvider>().mulai_bacalokasi();
       return MaterialApp(
         theme:
             ThemeData(appBarTheme: AppBarTheme(backgroundColor: Colors.orange)),

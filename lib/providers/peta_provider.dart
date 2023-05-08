@@ -7,10 +7,34 @@ class PetaProvider with ChangeNotifier{
   LocationAccuracy _accuracy = LocationAccuracy.low;
   LatLng latLng = LatLng(0, 0);
   LatLng latLng_lama = LatLng(0, 0);
+  double radius = 20;
+  // LatLng titiktengah =  LatLng(-0.058691324891420024, 109.35592918837658);
+  LatLng titiktengah =  LatLng(-0.061864789802221584, 109.35464312555375);
 
   MapController mapController = MapController();
   bool mapReady = false;
   bool mulaibaca = false;
+
+  void hitungulang(){
+    final zoom = mapController.zoom;
+    radius = zoom > 13 ? (zoom - 13) * 7.5 : 0;
+    // 13	14	15	16	17
+    // 0	7.5	15	22.5	30
+
+    print('radius $radius');
+  //  radius = 30 * zoom / 17;
+    notifyListeners();
+  }
+
+  double hitungjarak(){
+    final startLatitude = titiktengah.latitude;
+    final startLongitude = titiktengah.longitude;
+    final endLatitude = latLng.latitude;
+    final endLongitude = latLng.longitude;
+
+    final r = Geolocator.distanceBetween(startLatitude, startLongitude, endLatitude, endLongitude);
+    return r;
+  }
 
   void mulai_bacalokasi(){
     if(mulaibaca == false){
